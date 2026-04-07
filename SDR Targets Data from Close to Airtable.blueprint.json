@@ -1,0 +1,3118 @@
+{
+    "name": "[Cloudplusplus] SDR Targets Data - Daily (Yesterday)",
+    "flow": [
+        {
+            "id": 79,
+            "module": "util:SetVariables",
+            "version": 1,
+            "parameters": {},
+            "mapper": {
+                "scope": "roundtrip",
+                "variables": [
+                    {
+                        "name": "Client Airtable Record ID",
+                        "value": "recpxl6585CYDZxCb"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "{{formatDate(addDays(formatDate(now; \"DD-MM-YYYY\"); -1); \"DD-MM-YYYY\")}}"
+                    }
+                ]
+            },
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 450,
+                    "name": "Client Variables"
+                },
+                "restore": {
+                    "expect": {
+                        "scope": {
+                            "label": "One cycle"
+                        },
+                        "variables": {
+                            "items": [
+                                null,
+                                null
+                            ]
+                        }
+                    }
+                },
+                "expect": [
+                    {
+                        "name": "variables",
+                        "spec": [
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Variable name",
+                                "required": true
+                            },
+                            {
+                                "name": "value",
+                                "type": "any",
+                                "label": "Variable value"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Variables"
+                    },
+                    {
+                        "name": "scope",
+                        "type": "select",
+                        "label": "Variable lifetime",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "roundtrip",
+                                "execution"
+                            ]
+                        }
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "Client Airtable Record ID",
+                        "type": "any",
+                        "label": "Client Airtable Record ID"
+                    },
+                    {
+                        "name": "Date",
+                        "type": "any",
+                        "label": "Date"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 104,
+            "module": "airtable:ActionGetRecord",
+            "version": 3,
+            "parameters": {
+                "__IMTCONN__": 1052860
+            },
+            "mapper": {
+                "id": "{{79.`Client Airtable Record ID`}}",
+                "base": "appYZZLs6i4BAjWMN",
+                "table": "tbl1m1Z3uGVgcM6fH",
+                "useColumnId": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 316,
+                    "y": 426
+                },
+                "restore": {
+                    "expect": {
+                        "base": {
+                            "mode": "chose",
+                            "label": "Blynked"
+                        },
+                        "table": {
+                            "mode": "chose",
+                            "label": "Clients"
+                        },
+                        "useColumnId": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "airtable3"
+                            },
+                            "label": "My Airtable OAuth connection (User ID: usrYVWkEW0eWZmXMJ)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:airtable3,airtable2",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "base",
+                        "type": "select",
+                        "label": "Base",
+                        "required": true
+                    },
+                    {
+                        "name": "useColumnId",
+                        "type": "boolean",
+                        "label": "Use Column ID",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "Record ID",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "createdTime",
+                        "type": "date",
+                        "label": "Created Time"
+                    },
+                    {
+                        "name": "Company",
+                        "type": "text",
+                        "label": "Company"
+                    },
+                    {
+                        "name": "Client Status",
+                        "type": "text",
+                        "label": "Client Status"
+                    },
+                    {
+                        "name": "Client Risk",
+                        "type": "text",
+                        "label": "Client Risk"
+                    },
+                    {
+                        "name": "Master Booked Call Board 2",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Master Booked Call Board 2"
+                    },
+                    {
+                        "name": "Domains",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Domains"
+                    },
+                    {
+                        "name": "Positive responses",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Positive responses"
+                    },
+                    {
+                        "name": "Client ID (from Master Booked Call Board copy 4)",
+                        "type": "array",
+                        "label": "Client ID (from Master Booked Call Board copy 4)"
+                    },
+                    {
+                        "name": "Contract ending date",
+                        "time": false,
+                        "type": "date",
+                        "label": "Contract ending date"
+                    },
+                    {
+                        "name": "Client KPI (qualified calls)",
+                        "type": "number",
+                        "label": "Client KPI (qualified calls)"
+                    },
+                    {
+                        "name": "Status KPI (Qualified Calls)",
+                        "type": "number",
+                        "label": "Status KPI (Qualified Calls)"
+                    },
+                    {
+                        "name": "KPI Calls (netto) - month",
+                        "type": "number",
+                        "label": "KPI Calls (netto) - month"
+                    },
+                    {
+                        "name": "Client KPI Status",
+                        "type": "text",
+                        "label": "Client KPI Status"
+                    },
+                    {
+                        "name": "Client Email Access",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "email",
+                                "type": "email",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Client Email Access"
+                    },
+                    {
+                        "name": "EmailBison API Key",
+                        "type": "text",
+                        "label": "EmailBison API Key"
+                    },
+                    {
+                        "name": "Record ID",
+                        "type": "text",
+                        "label": "Record ID"
+                    },
+                    {
+                        "name": "English - Link to Domain Blocklist Form",
+                        "type": "text",
+                        "label": "English - Link to Domain Blocklist Form"
+                    },
+                    {
+                        "name": "ID",
+                        "type": "number",
+                        "label": "ID"
+                    },
+                    {
+                        "name": "inboxes",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "inboxes"
+                    },
+                    {
+                        "name": "SDR Stat Reporting",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "SDR Stat Reporting"
+                    },
+                    {
+                        "name": "Master Lead Storage",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Master Lead Storage"
+                    },
+                    {
+                        "name": "Master Scraping Board",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Master Scraping Board"
+                    },
+                    {
+                        "name": "Master Campaign Board",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Master Campaign Board"
+                    },
+                    {
+                        "name": "General",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "General"
+                    },
+                    {
+                        "name": "inboxes 2",
+                        "type": "text",
+                        "label": "inboxes 2"
+                    },
+                    {
+                        "name": "Campaign Tracker",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Campaign Tracker"
+                    },
+                    {
+                        "name": "Scorecard",
+                        "type": "text",
+                        "label": "Scorecard"
+                    },
+                    {
+                        "name": "Master Campaign Board copy",
+                        "type": "text",
+                        "label": "Master Campaign Board copy"
+                    },
+                    {
+                        "name": "Client invoices",
+                        "type": "text",
+                        "label": "Client invoices"
+                    },
+                    {
+                        "name": "Revenue",
+                        "type": "text",
+                        "label": "Revenue"
+                    },
+                    {
+                        "name": "Client ID",
+                        "type": "number",
+                        "label": "Client ID"
+                    },
+                    {
+                        "name": "Slack Channel ID",
+                        "type": "text",
+                        "label": "Slack Channel ID"
+                    },
+                    {
+                        "name": "Daily Pull Report",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Daily Pull Report"
+                    },
+                    {
+                        "name": "First name",
+                        "type": "text",
+                        "label": "First name"
+                    },
+                    {
+                        "name": "Last name",
+                        "type": "text",
+                        "label": "Last name"
+                    },
+                    {
+                        "name": "Email",
+                        "type": "text",
+                        "label": "Email"
+                    },
+                    {
+                        "name": "Scorecard 2",
+                        "type": "text",
+                        "label": "Scorecard 2"
+                    },
+                    {
+                        "name": "Scorecard 3",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Scorecard 3"
+                    },
+                    {
+                        "name": "Select",
+                        "type": "text",
+                        "label": "Select"
+                    },
+                    {
+                        "name": "Image",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "width",
+                                "type": "uinteger",
+                                "label": "Width"
+                            },
+                            {
+                                "name": "height",
+                                "type": "uinteger",
+                                "label": "Height"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name"
+                            },
+                            {
+                                "name": "size",
+                                "type": "uinteger",
+                                "label": "Size"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "MIME type"
+                            },
+                            {
+                                "name": "thumbnails",
+                                "spec": [
+                                    {
+                                        "name": "small",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Small"
+                                    },
+                                    {
+                                        "name": "large",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Large"
+                                    },
+                                    {
+                                        "name": "full",
+                                        "spec": [
+                                            {
+                                                "name": "url",
+                                                "type": "url",
+                                                "label": "URL"
+                                            },
+                                            {
+                                                "name": "width",
+                                                "type": "uinteger",
+                                                "label": "Width"
+                                            },
+                                            {
+                                                "name": "height",
+                                                "type": "uinteger",
+                                                "label": "Height"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Full"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Thumbnails"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Image"
+                    },
+                    {
+                        "name": "Stand-up (Lead Gen)",
+                        "type": "text",
+                        "label": "Stand-up (Lead Gen)"
+                    },
+                    {
+                        "name": "Client Case Studies",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Client Case Studies"
+                    },
+                    {
+                        "name": "Youtube channel",
+                        "type": "text",
+                        "label": "Youtube channel"
+                    },
+                    {
+                        "name": "Google Drive",
+                        "type": "text",
+                        "label": "Google Drive"
+                    },
+                    {
+                        "name": "Master Booked Call Board copy 2",
+                        "type": "text",
+                        "label": "Master Booked Call Board copy 2"
+                    },
+                    {
+                        "name": "Master Booked Call Board copy 3",
+                        "type": "text",
+                        "label": "Master Booked Call Board copy 3"
+                    },
+                    {
+                        "name": "Positive responses 2",
+                        "type": "text",
+                        "label": "Positive responses 2"
+                    },
+                    {
+                        "name": "General copy",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "General copy"
+                    },
+                    {
+                        "name": "SDR Stat Reporting 2",
+                        "type": "text",
+                        "label": "SDR Stat Reporting 2"
+                    },
+                    {
+                        "name": "Positive responses copy",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Positive responses copy"
+                    },
+                    {
+                        "name": "Master Booked Call Board copy",
+                        "type": "text",
+                        "label": "Master Booked Call Board copy"
+                    },
+                    {
+                        "name": "Scorecard copy",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Scorecard copy"
+                    },
+                    {
+                        "name": "Positive replies",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Positive replies"
+                    },
+                    {
+                        "name": "Client ID (from Positive replies)",
+                        "type": "array",
+                        "label": "Client ID (from Positive replies)"
+                    },
+                    {
+                        "name": "Company Name (from Positive replies)",
+                        "type": "array",
+                        "label": "Company Name (from Positive replies)"
+                    },
+                    {
+                        "name": "Date of positive reply (from Positive replies)",
+                        "type": "array",
+                        "label": "Date of positive reply (from Positive replies)"
+                    },
+                    {
+                        "name": "Clients: Scorecard copy",
+                        "type": "text",
+                        "label": "Clients: Scorecard copy"
+                    },
+                    {
+                        "name": "Campaign Tracker copy",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Campaign Tracker copy"
+                    },
+                    {
+                        "name": "Daily pull report link",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Daily pull report link"
+                    },
+                    {
+                        "name": "Unique Contacted (from Daily pull report link)",
+                        "type": "array",
+                        "label": "Unique Contacted (from Daily pull report link)"
+                    },
+                    {
+                        "name": "Report Date (from Daily pull report link)",
+                        "type": "array",
+                        "label": "Report Date (from Daily pull report link)"
+                    },
+                    {
+                        "name": "Status Booked Calls (bruto) - month",
+                        "type": "number",
+                        "label": "Status Booked Calls (bruto) - month"
+                    },
+                    {
+                        "name": "Client",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "email",
+                                "type": "email",
+                                "label": "Email"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Client"
+                    },
+                    {
+                        "name": "Pos. Replies [MONTH]",
+                        "type": "number",
+                        "label": "Pos. Replies [MONTH]"
+                    },
+                    {
+                        "name": "KPI Calls (bruto) - month",
+                        "type": "text",
+                        "label": "KPI Calls (bruto) - month"
+                    },
+                    {
+                        "name": "Qualified rate average",
+                        "type": "array",
+                        "label": "Qualified rate average"
+                    },
+                    {
+                        "name": "Progress KPI",
+                        "type": "text",
+                        "label": "Progress KPI"
+                    },
+                    {
+                        "name": "Monthly till contract ending date",
+                        "type": "text",
+                        "label": "Monthly till contract ending date"
+                    },
+                    {
+                        "name": "Unique Contacted THIS MONTH",
+                        "type": "array",
+                        "label": "Unique Contacted THIS MONTH"
+                    },
+                    {
+                        "name": "Left till KPI is hit",
+                        "type": "text",
+                        "label": "Left till KPI is hit"
+                    },
+                    {
+                        "name": "KPI Notes",
+                        "type": "text",
+                        "label": "KPI Notes"
+                    },
+                    {
+                        "name": "Total Booked Calls (year)",
+                        "type": "number",
+                        "label": "Total Booked Calls (year)"
+                    },
+                    {
+                        "name": "SDR",
+                        "type": "text",
+                        "label": "SDR"
+                    },
+                    {
+                        "name": "KPI Calls (netto) - week",
+                        "type": "number",
+                        "label": "KPI Calls (netto) - week"
+                    },
+                    {
+                        "name": "KPI Calls (bruto) - week",
+                        "type": "text",
+                        "label": "KPI Calls (bruto) - week"
+                    },
+                    {
+                        "name": "Status Booked Calls (bruto) - week",
+                        "type": "number",
+                        "label": "Status Booked Calls (bruto) - week"
+                    },
+                    {
+                        "name": "SDR Stat Reporting copy",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "SDR Stat Reporting copy"
+                    },
+                    {
+                        "name": "SDR Emails sent (month)",
+                        "type": "array",
+                        "label": "SDR Emails sent (month)"
+                    },
+                    {
+                        "name": "SDR Emails sent (week)",
+                        "type": "array",
+                        "label": "SDR Emails sent (week)"
+                    },
+                    {
+                        "name": "SDR Calls done (week)",
+                        "type": "array",
+                        "label": "SDR Calls done (week)"
+                    },
+                    {
+                        "name": "SDR Calls done (month)",
+                        "type": "array",
+                        "label": "SDR Calls done (month)"
+                    },
+                    {
+                        "name": "SDR Calling Time (month)",
+                        "type": "text",
+                        "label": "SDR Calling Time (month)"
+                    },
+                    {
+                        "name": "SDR Call Seconds (month)",
+                        "type": "array",
+                        "label": "SDR Call Seconds (month)"
+                    },
+                    {
+                        "name": "Call Feedback",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Call Feedback"
+                    },
+                    {
+                        "name": "Priority SDR Notifications",
+                        "type": "boolean",
+                        "label": "Priority SDR Notifications"
+                    },
+                    {
+                        "name": "Projected Qualified Calls (EOY)",
+                        "type": "text",
+                        "label": "Projected Qualified Calls (EOY)"
+                    },
+                    {
+                        "name": "Projected Missed Calls (EOY)",
+                        "type": "text",
+                        "label": "Projected Missed Calls (EOY)"
+                    },
+                    {
+                        "name": "System - KPI Calls (netto) - month",
+                        "type": "text",
+                        "label": "System - KPI Calls (netto) - month"
+                    },
+                    {
+                        "name": "System - KPI Calls (brutto) - month",
+                        "type": "text",
+                        "label": "System - KPI Calls (brutto) - month"
+                    },
+                    {
+                        "name": "System - KPI Calls (netto) - week",
+                        "type": "text",
+                        "label": "System - KPI Calls (netto) - week"
+                    },
+                    {
+                        "name": "System - KPI Calls (brutto) - week",
+                        "type": "text",
+                        "label": "System - KPI Calls (brutto) - week"
+                    },
+                    {
+                        "name": "Second EmailBison API Key",
+                        "type": "text",
+                        "label": "Second EmailBison API Key"
+                    },
+                    {
+                        "name": "EmailBison Workspace ID",
+                        "type": "number",
+                        "label": "EmailBison Workspace ID"
+                    },
+                    {
+                        "name": "Second EmailBison Workspace ID",
+                        "type": "number",
+                        "label": "Second EmailBison Workspace ID"
+                    },
+                    {
+                        "name": "New KPI Target Date",
+                        "time": false,
+                        "type": "date",
+                        "label": "New KPI Target Date"
+                    },
+                    {
+                        "name": "Monthly till new kpi date",
+                        "type": "text",
+                        "label": "Monthly till new kpi date"
+                    },
+                    {
+                        "name": "Unique Contacted THIS WEEK",
+                        "type": "array",
+                        "label": "Unique Contacted THIS WEEK"
+                    },
+                    {
+                        "name": "Unique Contacted ALL TIME",
+                        "type": "array",
+                        "label": "Unique Contacted ALL TIME"
+                    },
+                    {
+                        "name": "Pos. Replies [ALL TIME]",
+                        "type": "number",
+                        "label": "Pos. Replies [ALL TIME]"
+                    },
+                    {
+                        "name": "Notes",
+                        "type": "text",
+                        "label": "Notes",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Pos. Replies [W1]",
+                        "type": "number",
+                        "label": "Pos. Replies [W1]"
+                    },
+                    {
+                        "name": "Pos. Replies [W2]",
+                        "type": "number",
+                        "label": "Pos. Replies [W2]"
+                    },
+                    {
+                        "name": "Pos. Replies [W3]",
+                        "type": "number",
+                        "label": "Pos. Replies [W3]"
+                    },
+                    {
+                        "name": "Pos. Replies [W4]",
+                        "type": "number",
+                        "label": "Pos. Replies [W4]"
+                    },
+                    {
+                        "name": "Domain Block List",
+                        "spec": {
+                            "label": "Record ID"
+                        },
+                        "type": "array",
+                        "label": "Domain Block List"
+                    },
+                    {
+                        "name": "Dutch - Link to Domain Blocklist Form copy",
+                        "type": "text",
+                        "label": "Dutch - Link to Domain Blocklist Form copy"
+                    },
+                    {
+                        "name": "AI Prompt (Custom)",
+                        "type": "text",
+                        "label": "AI Prompt (Custom)",
+                        "multiline": true
+                    },
+                    {
+                        "name": "Podcast Link",
+                        "type": "text",
+                        "label": "Podcast Link"
+                    },
+                    {
+                        "name": "Calendly Link",
+                        "type": "text",
+                        "label": "Calendly Link"
+                    },
+                    {
+                        "name": "Close Tasks Overdue",
+                        "type": "number",
+                        "label": "Close Tasks Overdue"
+                    },
+                    {
+                        "name": "Close Email Replies Overdue",
+                        "type": "number",
+                        "label": "Close Email Replies Overdue"
+                    },
+                    {
+                        "name": "Vector Store ID",
+                        "type": "text",
+                        "label": "Vector Store ID"
+                    },
+                    {
+                        "name": "Assistant ID",
+                        "type": "text",
+                        "label": "Assistant ID"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 80,
+            "module": "close-crm:ActionListOpportunities",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 11154007
+            },
+            "mapper": {
+                "limit": "10000",
+                "query": "date_created:yesterday",
+                "_order_by": "date_created"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 450,
+                    "name": "Booked Calls"
+                },
+                "restore": {
+                    "expect": {
+                        "lead_id": {
+                            "mode": "chose"
+                        },
+                        "user_id": {
+                            "mode": "chose"
+                        },
+                        "_order_by": {
+                            "mode": "chose",
+                            "label": "Date Created"
+                        },
+                        "status_id": {
+                            "mode": "chose"
+                        },
+                        "value_period": {
+                            "mode": "chose"
+                        },
+                        "order_direction": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "close-crm"
+                            },
+                            "label": "Cloudplusplus (cloudplusplus@blynked.io)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:close-crm",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "lead_id",
+                        "type": "select",
+                        "label": "Lead IDs",
+                        "multiple": true
+                    },
+                    {
+                        "name": "user_id",
+                        "type": "select",
+                        "label": "User IDs",
+                        "multiple": true
+                    },
+                    {
+                        "name": "status_id",
+                        "type": "select",
+                        "label": "Status IDs",
+                        "multiple": true
+                    },
+                    {
+                        "name": "value_period",
+                        "type": "select",
+                        "label": "Value Periods",
+                        "multiple": true,
+                        "validate": {
+                            "enum": [
+                                "one_time",
+                                "monthly",
+                                "annual"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "query",
+                        "type": "text",
+                        "label": "Query"
+                    },
+                    {
+                        "name": "_order_by",
+                        "type": "select",
+                        "label": "Order by",
+                        "validate": {
+                            "enum": [
+                                "date_won",
+                                "date_created",
+                                "date_updated",
+                                "confidence",
+                                "user_name",
+                                "value",
+                                "annualized_value",
+                                "annualized_expected_value"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "order_direction",
+                        "type": "select",
+                        "label": "Order Direction",
+                        "validate": {
+                            "enum": [
+                                "",
+                                "-"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "type": "uinteger",
+                        "label": "Limit"
+                    },
+                    {
+                        "name": "lead_id",
+                        "type": "select",
+                        "label": "Lead IDs",
+                        "multiple": true
+                    },
+                    {
+                        "name": "user_id",
+                        "type": "select",
+                        "label": "User IDs",
+                        "multiple": true
+                    },
+                    {
+                        "name": "status_id",
+                        "type": "select",
+                        "label": "Status IDs",
+                        "multiple": true
+                    },
+                    {
+                        "name": "value_period",
+                        "type": "select",
+                        "label": "Value Periods",
+                        "multiple": true,
+                        "validate": {
+                            "enum": [
+                                "one_time",
+                                "monthly",
+                                "annual"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "query",
+                        "type": "text",
+                        "label": "Query"
+                    },
+                    {
+                        "name": "_order_by",
+                        "type": "select",
+                        "label": "Order by",
+                        "validate": {
+                            "enum": [
+                                "date_won",
+                                "date_created",
+                                "date_updated",
+                                "confidence",
+                                "user_name",
+                                "value",
+                                "annualized_value",
+                                "annualized_expected_value"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "order_direction",
+                        "type": "select",
+                        "label": "Order Direction",
+                        "validate": {
+                            "enum": [
+                                "",
+                                "-"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "type": "uinteger",
+                        "label": "Limit"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "__IMTLENGTH__",
+                        "type": "uinteger",
+                        "label": "Total number of bundles"
+                    },
+                    {
+                        "name": "__IMTINDEX__",
+                        "type": "uinteger",
+                        "label": "Bundle order position"
+                    },
+                    {
+                        "name": "lead_id",
+                        "type": "text",
+                        "label": "Lead ID"
+                    },
+                    {
+                        "name": "value_currency",
+                        "type": "text",
+                        "label": "Value Currency"
+                    },
+                    {
+                        "name": "status_id",
+                        "type": "text",
+                        "label": "Status ID"
+                    },
+                    {
+                        "name": "contact_name",
+                        "type": "text",
+                        "label": "Contact Name"
+                    },
+                    {
+                        "name": "status_display_name",
+                        "type": "text",
+                        "label": "Status Display Name"
+                    },
+                    {
+                        "name": "status_label",
+                        "type": "text",
+                        "label": "Status Label"
+                    },
+                    {
+                        "name": "lead_name",
+                        "type": "text",
+                        "label": "Lead Name"
+                    },
+                    {
+                        "name": "integration_links",
+                        "type": "array",
+                        "label": "Integration Links"
+                    },
+                    {
+                        "name": "updated_by",
+                        "type": "text",
+                        "label": "Updated by"
+                    },
+                    {
+                        "name": "created_by",
+                        "type": "text",
+                        "label": "Created by"
+                    },
+                    {
+                        "name": "user_name",
+                        "type": "text",
+                        "label": "User Name"
+                    },
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "Opportunity ID"
+                    },
+                    {
+                        "name": "user_id",
+                        "type": "text",
+                        "label": "User ID"
+                    },
+                    {
+                        "name": "updated_by_name",
+                        "type": "text",
+                        "label": "Updated by Name"
+                    },
+                    {
+                        "name": "value_formatted",
+                        "type": "text",
+                        "label": "Value Formatted"
+                    },
+                    {
+                        "name": "date_created",
+                        "type": "date",
+                        "label": "Date Created"
+                    },
+                    {
+                        "name": "date_lost",
+                        "type": "date",
+                        "label": "Date Lost"
+                    },
+                    {
+                        "name": "note",
+                        "type": "text",
+                        "label": "Note"
+                    },
+                    {
+                        "name": "annualized_expected_value",
+                        "type": "number",
+                        "label": "Annualized Expected Value"
+                    },
+                    {
+                        "name": "contact_id",
+                        "type": "text",
+                        "label": "Contact ID"
+                    },
+                    {
+                        "name": "value_period",
+                        "type": "text",
+                        "label": "Value Period"
+                    },
+                    {
+                        "name": "date_updated",
+                        "type": "date",
+                        "label": "Date Updated"
+                    },
+                    {
+                        "name": "created_by_name",
+                        "type": "text",
+                        "label": "Created by Name"
+                    },
+                    {
+                        "name": "organization_id",
+                        "type": "text",
+                        "label": "Organization ID"
+                    },
+                    {
+                        "name": "expected_value",
+                        "type": "number",
+                        "label": "Expected Value"
+                    },
+                    {
+                        "name": "value",
+                        "type": "number",
+                        "label": "Value"
+                    },
+                    {
+                        "name": "confidence",
+                        "type": "number",
+                        "label": "Confidence"
+                    },
+                    {
+                        "name": "status_type",
+                        "type": "text",
+                        "label": "Status Type"
+                    },
+                    {
+                        "name": "date_won",
+                        "type": "date",
+                        "label": "Date Won"
+                    },
+                    {
+                        "name": "annualized_value",
+                        "type": "number",
+                        "label": "Annualized Value"
+                    },
+                    {
+                        "name": "custom.cf_iivObbJELoVYIMAQy7KjfscYTvhnSIu1C5sXZr98Koo",
+                        "type": "array",
+                        "label": "Product Type"
+                    },
+                    {
+                        "name": "custom.cf_gsSboWFJgT6zPKDjtSAHbay02knJiKU69QPZh2F00UK",
+                        "type": "array",
+                        "label": "Plan"
+                    },
+                    {
+                        "name": "custom.cf_R5BUKGktS7NE4d7NKtJ5mSp1SiI9MngOhRrVFdvoCqE",
+                        "type": "array",
+                        "label": "Disqualified Reason"
+                    },
+                    {
+                        "name": "custom.cf_m5d2lqVjgSK2E01rXKIhR63ml6QSfpoqX41ST4p4nKU",
+                        "type": "text",
+                        "label": "Escalated Reason"
+                    },
+                    {
+                        "name": "custom.cf_Ae9Nowvsm8U2G2pYp5k2uKMs2PvRKnC96IRQyjX0991",
+                        "type": "array",
+                        "label": "Closed Lost Reason"
+                    },
+                    {
+                        "name": "custom.cf_kkW8qH9lPKuLR7lamgLO6JNs94rE77jrfSzL06ybFAM",
+                        "type": "text",
+                        "label": "Agreement Link"
+                    },
+                    {
+                        "name": "custom.cf_lGKmZ0hMSeoaNlNSV1YmzTW1Re6MfAv5irEJOqVhIG5",
+                        "time": false,
+                        "type": "date",
+                        "label": "Agreement Start Date"
+                    },
+                    {
+                        "name": "custom.cf_176siklTqyC84DPp589muiuTeQKrds5tCC5DJmo3pbH",
+                        "time": false,
+                        "type": "date",
+                        "label": "Agreement End Date"
+                    },
+                    {
+                        "name": "custom.cf_1618w651ofzC97XTvsaSapdWl03kOWkSzl8DwkV9No0",
+                        "type": "number",
+                        "label": "Seats"
+                    },
+                    {
+                        "name": "custom.cf_fwvoSQjMMWdjEvSKl9GicBHFtyhbLIAFZ6NsBo4w4om",
+                        "type": "text",
+                        "label": "Tracking ID"
+                    },
+                    {
+                        "name": "custom.cf_gW9RdeBbvxfHXXOoyBH7sjRWMx9lwoM1yvZYlI8ejCU",
+                        "type": "date",
+                        "label": "Discovery Call Date"
+                    },
+                    {
+                        "name": "custom.cf_mMoBNtrvhShLxR6L99VpRPFQWYppZmdD6cb79XVhJNI",
+                        "type": "date",
+                        "label": "Follow-up Call Date"
+                    },
+                    {
+                        "name": "custom.cf_O49dNBIhlA637mHFn3mB0b7QrC4M3iCCCqedwrAqcSs",
+                        "type": "date",
+                        "label": "Sales Call Date"
+                    },
+                    {
+                        "name": "custom.cf_k4tLdb3kIgZavJyx4MCvQcvY4FJQQwFjX2MW0T224N2",
+                        "type": "array",
+                        "label": "Type of Call"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 81,
+            "module": "builtin:BasicRouter",
+            "version": 1,
+            "mapper": null,
+            "metadata": {
+                "designer": {
+                    "x": 900,
+                    "y": 450
+                }
+            },
+            "routes": [
+                {
+                    "flow": [
+                        {
+                            "id": 82,
+                            "module": "close-crm:ActionListCalls",
+                            "version": 1,
+                            "parameters": {
+                                "__IMTCONN__": 11154007
+                            },
+                            "filter": {
+                                "name": "Call Branch",
+                                "conditions": []
+                            },
+                            "mapper": {
+                                "limit": "10000"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1200,
+                                    "y": 150,
+                                    "name": "List Calls"
+                                },
+                                "restore": {
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "close-crm"
+                                            },
+                                            "label": "Cloudplusplus (cloudplusplus@blynked.io)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:close-crm",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "limit",
+                                        "type": "uinteger",
+                                        "label": "Limit"
+                                    },
+                                    {
+                                        "name": "limit",
+                                        "type": "uinteger",
+                                        "label": "Limit"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 83,
+                            "module": "close-crm:ActionGetCall",
+                            "version": 1,
+                            "parameters": {
+                                "__IMTCONN__": 11154007
+                            },
+                            "filter": {
+                                "name": "Only pass calls from yesterday OVER 0s",
+                                "conditions": [
+                                    [
+                                        {
+                                            "a": "{{formatDate(82.date_created; \"DD-MM-YYYY\")}}",
+                                            "b": "{{formatDate(addDays(now; -4); \"DD-MM-YYYY\")}}",
+                                            "o": "text:equal"
+                                        },
+                                        {
+                                            "a": "{{82.duration}}",
+                                            "b": "0",
+                                            "o": "number:greaterorequal"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "mapper": {
+                                "id": "{{82.id}}"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1604,
+                                    "y": 152
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "id": {
+                                            "mode": "edit"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "close-crm"
+                                            },
+                                            "label": "Cloudplusplus (cloudplusplus@blynked.io)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:close-crm",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "mode": "edit",
+                                        "name": "id",
+                                        "type": "select",
+                                        "label": "Call ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "mode": "edit",
+                                        "name": "id",
+                                        "type": "select",
+                                        "label": "Call ID",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 84,
+                            "module": "airtable:ActionSearchRecords",
+                            "version": 3,
+                            "parameters": {
+                                "__IMTCONN__": 1052860
+                            },
+                            "mapper": {
+                                "base": "appYZZLs6i4BAjWMN",
+                                "table": "tblAd6BVYAOH5kMwn",
+                                "formula": "{Record ID} = \"{{104.Company}} {{79.Date}}\"",
+                                "maxRecords": "1",
+                                "useColumnId": false
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1900,
+                                    "y": 152,
+                                    "name": "Search Daily Record"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "base": {
+                                            "mode": "chose",
+                                            "label": "Blynked"
+                                        },
+                                        "sort": {
+                                            "mode": "chose"
+                                        },
+                                        "view": {
+                                            "mode": "chose"
+                                        },
+                                        "table": {
+                                            "mode": "chose",
+                                            "label": "SDR Stat Reporting [ New]"
+                                        },
+                                        "fields": {
+                                            "mode": "chose"
+                                        },
+                                        "useColumnId": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "airtable3"
+                                            },
+                                            "label": "My Airtable OAuth connection (User ID: usrYVWkEW0eWZmXMJ)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:airtable3,airtable2",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "base",
+                                        "type": "select",
+                                        "label": "Base",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "useColumnId",
+                                        "type": "boolean",
+                                        "label": "Use Column ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "table",
+                                        "type": "select",
+                                        "label": "Table",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "formula",
+                                        "type": "text",
+                                        "label": "Formula"
+                                    },
+                                    {
+                                        "name": "maxRecords",
+                                        "type": "integer",
+                                        "label": "Limit"
+                                    },
+                                    {
+                                        "name": "sort",
+                                        "spec": [
+                                            {
+                                                "name": "field",
+                                                "type": "select",
+                                                "label": "Field",
+                                                "dynamic": true,
+                                                "options": []
+                                            },
+                                            {
+                                                "name": "direction",
+                                                "type": "select",
+                                                "label": "Direction",
+                                                "options": [
+                                                    {
+                                                        "label": "Descending",
+                                                        "value": "desc"
+                                                    },
+                                                    {
+                                                        "label": "Ascending",
+                                                        "value": "asc"
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Sort"
+                                    },
+                                    {
+                                        "name": "view",
+                                        "type": "select",
+                                        "label": "View"
+                                    },
+                                    {
+                                        "name": "fields",
+                                        "type": "select",
+                                        "label": "Output Fields",
+                                        "multiple": true
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "__IMTLENGTH__",
+                                        "type": "uinteger",
+                                        "label": "Total number of bundles"
+                                    },
+                                    {
+                                        "name": "__IMTINDEX__",
+                                        "type": "uinteger",
+                                        "label": "Bundle order position"
+                                    },
+                                    {
+                                        "name": "id",
+                                        "type": "text",
+                                        "label": "ID"
+                                    },
+                                    {
+                                        "name": "createdTime",
+                                        "type": "date",
+                                        "label": "Created Time"
+                                    },
+                                    {
+                                        "name": "Record ID",
+                                        "type": "text",
+                                        "label": "Record ID"
+                                    },
+                                    {
+                                        "name": "Date created",
+                                        "time": false,
+                                        "type": "date",
+                                        "label": "Date created"
+                                    },
+                                    {
+                                        "name": "Calls Booked",
+                                        "type": "number",
+                                        "label": "Calls Booked"
+                                    },
+                                    {
+                                        "name": "Emails Sent",
+                                        "type": "number",
+                                        "label": "Emails Sent"
+                                    },
+                                    {
+                                        "name": "Calls Done",
+                                        "type": "number",
+                                        "label": "Calls Done"
+                                    },
+                                    {
+                                        "name": "Clients",
+                                        "spec": {
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Clients"
+                                    },
+                                    {
+                                        "name": "Sort Weekly",
+                                        "type": "text",
+                                        "label": "Sort Weekly"
+                                    },
+                                    {
+                                        "name": "Clients 2",
+                                        "type": "array",
+                                        "label": "Clients 2"
+                                    },
+                                    {
+                                        "name": "Calling Time (minutes)",
+                                        "type": "text",
+                                        "label": "Calling Time (minutes)"
+                                    },
+                                    {
+                                        "name": "Raw Seconds - Call Duration",
+                                        "type": "number",
+                                        "label": "Raw Seconds - Call Duration"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 85,
+                            "module": "builtin:BasicRouter",
+                            "version": 1,
+                            "mapper": null,
+                            "metadata": {
+                                "designer": {
+                                    "x": 2200,
+                                    "y": 152
+                                }
+                            },
+                            "routes": [
+                                {
+                                    "flow": [
+                                        {
+                                            "id": 86,
+                                            "module": "airtable:ActionCreateRecord",
+                                            "version": 3,
+                                            "parameters": {
+                                                "__IMTCONN__": 1052860
+                                            },
+                                            "filter": {
+                                                "name": "Record does not exist",
+                                                "conditions": [
+                                                    [
+                                                        {
+                                                            "a": "{{84.`__IMTLENGTH__`}}",
+                                                            "b": "0",
+                                                            "o": "text:equal"
+                                                        }
+                                                    ]
+                                                ]
+                                            },
+                                            "mapper": {
+                                                "base": "appYZZLs6i4BAjWMN",
+                                                "table": "tblAd6BVYAOH5kMwn",
+                                                "record": {
+                                                    "fldP6Bx3LsLZQ2lGM": "{{83.duration}}",
+                                                    "fldVgvbKpm4hvzX8V": "{{79.Date}}",
+                                                    "fldZ4CgWycT8acELd": "{{80.`__IMTLENGTH__`}}",
+                                                    "flddwXJsmslsCqAEV": "1",
+                                                    "fldqN2LzromCA88I6": [
+                                                        "{{104.id}}"
+                                                    ]
+                                                },
+                                                "typecast": false,
+                                                "useColumnId": false
+                                            },
+                                            "metadata": {
+                                                "designer": {
+                                                    "x": 2592,
+                                                    "y": 1,
+                                                    "name": "Create Daily record"
+                                                },
+                                                "restore": {
+                                                    "expect": {
+                                                        "base": {
+                                                            "label": "Blynked"
+                                                        },
+                                                        "table": {
+                                                            "label": "SDR Stat Reporting [ New]",
+                                                            "nested": [
+                                                                {
+                                                                    "name": "record",
+                                                                    "spec": [
+                                                                        {
+                                                                            "name": "fldVgvbKpm4hvzX8V",
+                                                                            "time": false,
+                                                                            "type": "date",
+                                                                            "label": "Date created"
+                                                                        },
+                                                                        {
+                                                                            "name": "fldZ4CgWycT8acELd",
+                                                                            "type": "number",
+                                                                            "label": "Booked calls"
+                                                                        },
+                                                                        {
+                                                                            "name": "fldZfugMKONJ1eOGz",
+                                                                            "type": "number",
+                                                                            "label": "Sent emails"
+                                                                        },
+                                                                        {
+                                                                            "name": "flddwXJsmslsCqAEV",
+                                                                            "type": "number",
+                                                                            "label": "Completed calls"
+                                                                        },
+                                                                        {
+                                                                            "name": "fldqN2LzromCA88I6",
+                                                                            "spec": {
+                                                                                "label": "Record ID"
+                                                                            },
+                                                                            "type": "array",
+                                                                            "label": "Clients"
+                                                                        },
+                                                                        {
+                                                                            "name": "fldP6Bx3LsLZQ2lGM",
+                                                                            "type": "number",
+                                                                            "label": "Raw Seconds - Call Duration"
+                                                                        }
+                                                                    ],
+                                                                    "type": "collection",
+                                                                    "label": "Record"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "record": {
+                                                            "nested": {
+                                                                "fldqN2LzromCA88I6": {
+                                                                    "mode": "chose",
+                                                                    "items": [
+                                                                        null
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        "typecast": {
+                                                            "mode": "chose"
+                                                        },
+                                                        "useColumnId": {
+                                                            "mode": "chose"
+                                                        }
+                                                    },
+                                                    "parameters": {
+                                                        "__IMTCONN__": {
+                                                            "data": {
+                                                                "scoped": "true",
+                                                                "connection": "airtable3"
+                                                            },
+                                                            "label": "My Airtable OAuth connection (User ID: usrYVWkEW0eWZmXMJ)"
+                                                        }
+                                                    }
+                                                },
+                                                "parameters": [
+                                                    {
+                                                        "name": "__IMTCONN__",
+                                                        "type": "account:airtable3,airtable2",
+                                                        "label": "Connection",
+                                                        "required": true
+                                                    }
+                                                ],
+                                                "expect": [
+                                                    {
+                                                        "name": "base",
+                                                        "type": "select",
+                                                        "label": "Base",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "typecast",
+                                                        "type": "boolean",
+                                                        "label": "Smart links",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "useColumnId",
+                                                        "type": "boolean",
+                                                        "label": "Use Column ID",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "table",
+                                                        "type": "select",
+                                                        "label": "Table",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "record",
+                                                        "spec": [
+                                                            {
+                                                                "name": "fldVgvbKpm4hvzX8V",
+                                                                "time": false,
+                                                                "type": "date",
+                                                                "label": "Date created"
+                                                            },
+                                                            {
+                                                                "name": "fldZ4CgWycT8acELd",
+                                                                "type": "number",
+                                                                "label": "Booked calls"
+                                                            },
+                                                            {
+                                                                "name": "fldZfugMKONJ1eOGz",
+                                                                "type": "number",
+                                                                "label": "Sent emails"
+                                                            },
+                                                            {
+                                                                "name": "flddwXJsmslsCqAEV",
+                                                                "type": "number",
+                                                                "label": "Completed calls"
+                                                            },
+                                                            {
+                                                                "name": "fldqN2LzromCA88I6",
+                                                                "spec": {
+                                                                    "name": "value",
+                                                                    "label": "Record ID"
+                                                                },
+                                                                "type": "array",
+                                                                "label": "Clients"
+                                                            },
+                                                            {
+                                                                "name": "fldP6Bx3LsLZQ2lGM",
+                                                                "type": "number",
+                                                                "label": "Raw Seconds - Call Duration"
+                                                            }
+                                                        ],
+                                                        "type": "collection",
+                                                        "label": "Record"
+                                                    }
+                                                ],
+                                                "interface": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "text",
+                                                        "label": "ID"
+                                                    },
+                                                    {
+                                                        "name": "createdTime",
+                                                        "type": "date",
+                                                        "label": "Created Time"
+                                                    },
+                                                    {
+                                                        "name": "Record ID",
+                                                        "type": "text",
+                                                        "label": "Record ID"
+                                                    },
+                                                    {
+                                                        "name": "Date created",
+                                                        "time": false,
+                                                        "type": "date",
+                                                        "label": "Date created"
+                                                    },
+                                                    {
+                                                        "name": "Calls Booked",
+                                                        "type": "number",
+                                                        "label": "Calls Booked"
+                                                    },
+                                                    {
+                                                        "name": "Emails Sent",
+                                                        "type": "number",
+                                                        "label": "Emails Sent"
+                                                    },
+                                                    {
+                                                        "name": "Calls Done",
+                                                        "type": "number",
+                                                        "label": "Calls Done"
+                                                    },
+                                                    {
+                                                        "name": "Clients",
+                                                        "spec": {
+                                                            "label": "Record ID"
+                                                        },
+                                                        "type": "array",
+                                                        "label": "Clients"
+                                                    },
+                                                    {
+                                                        "name": "Sort Weekly",
+                                                        "type": "text",
+                                                        "label": "Sort Weekly"
+                                                    },
+                                                    {
+                                                        "name": "Clients 2",
+                                                        "type": "array",
+                                                        "label": "Clients 2"
+                                                    },
+                                                    {
+                                                        "name": "Calling Time (minutes)",
+                                                        "type": "text",
+                                                        "label": "Calling Time (minutes)"
+                                                    },
+                                                    {
+                                                        "name": "Raw Seconds - Call Duration",
+                                                        "type": "number",
+                                                        "label": "Raw Seconds - Call Duration"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "flow": [
+                                        {
+                                            "id": 88,
+                                            "module": "airtable:ActionUpdateRecords",
+                                            "version": 3,
+                                            "parameters": {
+                                                "__IMTCONN__": 1052860
+                                            },
+                                            "filter": {
+                                                "name": "Record Exists",
+                                                "conditions": [
+                                                    [
+                                                        {
+                                                            "a": "{{84.`__IMTLENGTH__`}}",
+                                                            "b": "1",
+                                                            "o": "text:equal"
+                                                        }
+                                                    ]
+                                                ]
+                                            },
+                                            "mapper": {
+                                                "id": "{{84.id}}",
+                                                "base": "appYZZLs6i4BAjWMN",
+                                                "table": "tblAd6BVYAOH5kMwn",
+                                                "record": {
+                                                    "fldP6Bx3LsLZQ2lGM": "{{84.`Raw Seconds - Call Duration` + 83.duration}}",
+                                                    "flddwXJsmslsCqAEV": "{{84.`Calls Done` + 1}}"
+                                                },
+                                                "typecast": false,
+                                                "useColumnId": false
+                                            },
+                                            "metadata": {
+                                                "designer": {
+                                                    "x": 2592,
+                                                    "y": 301,
+                                                    "name": "Update Record Call Minutes"
+                                                },
+                                                "restore": {
+                                                    "expect": {
+                                                        "base": {
+                                                            "label": "Blynked"
+                                                        },
+                                                        "table": {
+                                                            "label": "SDR Stat Reporting [ New]"
+                                                        },
+                                                        "record": {
+                                                            "nested": {
+                                                                "fldqN2LzromCA88I6": {
+                                                                    "mode": "chose"
+                                                                }
+                                                            }
+                                                        },
+                                                        "typecast": {
+                                                            "mode": "chose"
+                                                        },
+                                                        "useColumnId": {
+                                                            "mode": "chose"
+                                                        }
+                                                    },
+                                                    "parameters": {
+                                                        "__IMTCONN__": {
+                                                            "data": {
+                                                                "scoped": "true",
+                                                                "connection": "airtable3"
+                                                            },
+                                                            "label": "My Airtable OAuth connection (User ID: usrYVWkEW0eWZmXMJ)"
+                                                        }
+                                                    }
+                                                },
+                                                "parameters": [
+                                                    {
+                                                        "name": "__IMTCONN__",
+                                                        "type": "account:airtable3,airtable2",
+                                                        "label": "Connection",
+                                                        "required": true
+                                                    }
+                                                ],
+                                                "expect": [
+                                                    {
+                                                        "name": "base",
+                                                        "type": "select",
+                                                        "label": "Base",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "typecast",
+                                                        "type": "boolean",
+                                                        "label": "Smart links",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "useColumnId",
+                                                        "type": "boolean",
+                                                        "label": "Use Column ID",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "table",
+                                                        "type": "select",
+                                                        "label": "Table",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "id",
+                                                        "type": "text",
+                                                        "label": "Record ID",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "record",
+                                                        "spec": [
+                                                            {
+                                                                "name": "fldVgvbKpm4hvzX8V",
+                                                                "time": false,
+                                                                "type": "date",
+                                                                "label": "Date created"
+                                                            },
+                                                            {
+                                                                "name": "fldZ4CgWycT8acELd",
+                                                                "type": "number",
+                                                                "label": "Calls Booked"
+                                                            },
+                                                            {
+                                                                "name": "fldZfugMKONJ1eOGz",
+                                                                "type": "number",
+                                                                "label": "Emails Sent"
+                                                            },
+                                                            {
+                                                                "name": "flddwXJsmslsCqAEV",
+                                                                "type": "number",
+                                                                "label": "Calls Done"
+                                                            },
+                                                            {
+                                                                "name": "fldqN2LzromCA88I6",
+                                                                "spec": {
+                                                                    "name": "value",
+                                                                    "label": "Record ID"
+                                                                },
+                                                                "type": "array",
+                                                                "label": "Clients"
+                                                            },
+                                                            {
+                                                                "name": "fldP6Bx3LsLZQ2lGM",
+                                                                "type": "number",
+                                                                "label": "Raw Seconds - Call Duration"
+                                                            }
+                                                        ],
+                                                        "type": "collection",
+                                                        "label": "Record"
+                                                    }
+                                                ],
+                                                "interface": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "text",
+                                                        "label": "ID"
+                                                    },
+                                                    {
+                                                        "name": "createdTime",
+                                                        "type": "date",
+                                                        "label": "Created Time"
+                                                    },
+                                                    {
+                                                        "name": "Record ID",
+                                                        "type": "text",
+                                                        "label": "Record ID"
+                                                    },
+                                                    {
+                                                        "name": "Date created",
+                                                        "time": false,
+                                                        "type": "date",
+                                                        "label": "Date created"
+                                                    },
+                                                    {
+                                                        "name": "Calls Booked",
+                                                        "type": "number",
+                                                        "label": "Calls Booked"
+                                                    },
+                                                    {
+                                                        "name": "Emails Sent",
+                                                        "type": "number",
+                                                        "label": "Emails Sent"
+                                                    },
+                                                    {
+                                                        "name": "Calls Done",
+                                                        "type": "number",
+                                                        "label": "Calls Done"
+                                                    },
+                                                    {
+                                                        "name": "Clients",
+                                                        "spec": {
+                                                            "label": "Record ID"
+                                                        },
+                                                        "type": "array",
+                                                        "label": "Clients"
+                                                    },
+                                                    {
+                                                        "name": "Sort Weekly",
+                                                        "type": "text",
+                                                        "label": "Sort Weekly"
+                                                    },
+                                                    {
+                                                        "name": "Clients 2",
+                                                        "type": "array",
+                                                        "label": "Clients 2"
+                                                    },
+                                                    {
+                                                        "name": "Calling Time (minutes)",
+                                                        "type": "text",
+                                                        "label": "Calling Time (minutes)"
+                                                    },
+                                                    {
+                                                        "name": "Current Time -Automation Use only",
+                                                        "type": "text",
+                                                        "label": "Current Time -Automation Use only"
+                                                    },
+                                                    {
+                                                        "name": "Trigger automation",
+                                                        "type": "text",
+                                                        "label": "Trigger automation"
+                                                    },
+                                                    {
+                                                        "name": "Raw Seconds - Call Duration",
+                                                        "type": "number",
+                                                        "label": "Raw Seconds - Call Duration"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "flow": [
+                        {
+                            "id": 89,
+                            "module": "close-crm:ActionListEmails",
+                            "version": 1,
+                            "parameters": {
+                                "__IMTCONN__": 11154007
+                            },
+                            "filter": {
+                                "name": "Email Branch",
+                                "conditions": []
+                            },
+                            "mapper": {
+                                "limit": "100"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1200,
+                                    "y": 750,
+                                    "name": "List Emails"
+                                },
+                                "restore": {
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "close-crm"
+                                            },
+                                            "label": "Cloudplusplus (cloudplusplus@blynked.io)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:close-crm",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "limit",
+                                        "type": "uinteger",
+                                        "label": "Limit"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 90,
+                            "module": "close-crm:getAnEmailActivity",
+                            "version": 1,
+                            "parameters": {
+                                "__IMTCONN__": 11154007
+                            },
+                            "filter": {
+                                "name": "Only pass emails from yesterday",
+                                "conditions": [
+                                    [
+                                        {
+                                            "a": "{{formatDate(89.date_created; \"DD-MM-YYYY\")}}",
+                                            "b": "{{formatDate(addDays(now; -4); \"DD-MM-YYYY\")}}",
+                                            "o": "date:equal"
+                                        },
+                                        {
+                                            "a": "{{89.direction}}",
+                                            "b": "incoming",
+                                            "o": "text:notequal"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "mapper": {
+                                "id": "{{89.id}}"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1600,
+                                    "y": 752
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "id": {
+                                            "mode": "edit"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "close-crm"
+                                            },
+                                            "label": "Cloudplusplus (cloudplusplus@blynked.io)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:close-crm",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "mode": "edit",
+                                        "name": "id",
+                                        "type": "select",
+                                        "label": "Email Activity ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "mode": "edit",
+                                        "name": "id",
+                                        "type": "select",
+                                        "label": "Email Activity ID",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 106,
+                            "module": "airtable:ActionSearchRecords",
+                            "version": 3,
+                            "parameters": {
+                                "__IMTCONN__": 1052860
+                            },
+                            "mapper": {
+                                "base": "appYZZLs6i4BAjWMN",
+                                "table": "tblAd6BVYAOH5kMwn",
+                                "formula": "{Record ID} = \"{{104.Company}} {{79.Date}}\"",
+                                "maxRecords": "1",
+                                "useColumnId": false
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1900,
+                                    "y": 752,
+                                    "name": "Search Daily Record"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "base": {
+                                            "mode": "chose",
+                                            "label": "Blynked"
+                                        },
+                                        "sort": {
+                                            "mode": "chose"
+                                        },
+                                        "view": {
+                                            "mode": "chose"
+                                        },
+                                        "table": {
+                                            "mode": "chose",
+                                            "label": "SDR Stat Reporting [ New]"
+                                        },
+                                        "fields": {
+                                            "mode": "chose"
+                                        },
+                                        "useColumnId": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "airtable3"
+                                            },
+                                            "label": "My Airtable OAuth connection (User ID: usrYVWkEW0eWZmXMJ)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:airtable3,airtable2",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "base",
+                                        "type": "select",
+                                        "label": "Base",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "useColumnId",
+                                        "type": "boolean",
+                                        "label": "Use Column ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "table",
+                                        "type": "select",
+                                        "label": "Table",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "formula",
+                                        "type": "text",
+                                        "label": "Formula"
+                                    },
+                                    {
+                                        "name": "maxRecords",
+                                        "type": "integer",
+                                        "label": "Limit"
+                                    },
+                                    {
+                                        "name": "sort",
+                                        "spec": [
+                                            {
+                                                "name": "field",
+                                                "type": "select",
+                                                "label": "Field",
+                                                "dynamic": true,
+                                                "options": []
+                                            },
+                                            {
+                                                "name": "direction",
+                                                "type": "select",
+                                                "label": "Direction",
+                                                "options": [
+                                                    {
+                                                        "label": "Descending",
+                                                        "value": "desc"
+                                                    },
+                                                    {
+                                                        "label": "Ascending",
+                                                        "value": "asc"
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Sort"
+                                    },
+                                    {
+                                        "name": "view",
+                                        "type": "select",
+                                        "label": "View"
+                                    },
+                                    {
+                                        "name": "fields",
+                                        "type": "select",
+                                        "label": "Output Fields",
+                                        "multiple": true
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "__IMTLENGTH__",
+                                        "type": "uinteger",
+                                        "label": "Total number of bundles"
+                                    },
+                                    {
+                                        "name": "__IMTINDEX__",
+                                        "type": "uinteger",
+                                        "label": "Bundle order position"
+                                    },
+                                    {
+                                        "name": "id",
+                                        "type": "text",
+                                        "label": "ID"
+                                    },
+                                    {
+                                        "name": "createdTime",
+                                        "type": "date",
+                                        "label": "Created Time"
+                                    },
+                                    {
+                                        "name": "Record ID",
+                                        "type": "text",
+                                        "label": "Record ID"
+                                    },
+                                    {
+                                        "name": "Date created",
+                                        "time": false,
+                                        "type": "date",
+                                        "label": "Date created"
+                                    },
+                                    {
+                                        "name": "Calls Booked",
+                                        "type": "number",
+                                        "label": "Calls Booked"
+                                    },
+                                    {
+                                        "name": "Emails Sent",
+                                        "type": "number",
+                                        "label": "Emails Sent"
+                                    },
+                                    {
+                                        "name": "Calls Done",
+                                        "type": "number",
+                                        "label": "Calls Done"
+                                    },
+                                    {
+                                        "name": "Clients",
+                                        "spec": {
+                                            "label": "Record ID"
+                                        },
+                                        "type": "array",
+                                        "label": "Clients"
+                                    },
+                                    {
+                                        "name": "Sort Weekly",
+                                        "type": "text",
+                                        "label": "Sort Weekly"
+                                    },
+                                    {
+                                        "name": "Clients 2",
+                                        "type": "array",
+                                        "label": "Clients 2"
+                                    },
+                                    {
+                                        "name": "Calling Time (minutes)",
+                                        "type": "text",
+                                        "label": "Calling Time (minutes)"
+                                    },
+                                    {
+                                        "name": "Raw Seconds - Call Duration",
+                                        "type": "number",
+                                        "label": "Raw Seconds - Call Duration"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 107,
+                            "module": "builtin:BasicRouter",
+                            "version": 1,
+                            "mapper": null,
+                            "metadata": {
+                                "designer": {
+                                    "x": 2200,
+                                    "y": 752
+                                }
+                            },
+                            "routes": [
+                                {
+                                    "flow": [
+                                        {
+                                            "id": 108,
+                                            "module": "airtable:ActionCreateRecord",
+                                            "version": 3,
+                                            "parameters": {
+                                                "__IMTCONN__": 1052860
+                                            },
+                                            "filter": {
+                                                "name": "Record does not exist",
+                                                "conditions": [
+                                                    [
+                                                        {
+                                                            "a": "{{106.`__IMTLENGTH__`}}",
+                                                            "b": "0",
+                                                            "o": "text:equal"
+                                                        }
+                                                    ]
+                                                ]
+                                            },
+                                            "mapper": {
+                                                "base": "appYZZLs6i4BAjWMN",
+                                                "table": "tblAd6BVYAOH5kMwn",
+                                                "record": {
+                                                    "fldVgvbKpm4hvzX8V": "{{79.Date}}",
+                                                    "fldZfugMKONJ1eOGz": "1",
+                                                    "fldqN2LzromCA88I6": [
+                                                        "{{104.id}}"
+                                                    ]
+                                                },
+                                                "typecast": false,
+                                                "useColumnId": false
+                                            },
+                                            "metadata": {
+                                                "designer": {
+                                                    "x": 2592,
+                                                    "y": 601,
+                                                    "name": "Create Daily record"
+                                                },
+                                                "restore": {
+                                                    "expect": {
+                                                        "base": {
+                                                            "label": "Blynked"
+                                                        },
+                                                        "table": {
+                                                            "label": "SDR Stat Reporting [ New]",
+                                                            "nested": [
+                                                                {
+                                                                    "name": "record",
+                                                                    "spec": [
+                                                                        {
+                                                                            "name": "fldVgvbKpm4hvzX8V",
+                                                                            "time": false,
+                                                                            "type": "date",
+                                                                            "label": "Date created"
+                                                                        },
+                                                                        {
+                                                                            "name": "fldZ4CgWycT8acELd",
+                                                                            "type": "number",
+                                                                            "label": "Booked calls"
+                                                                        },
+                                                                        {
+                                                                            "name": "fldZfugMKONJ1eOGz",
+                                                                            "type": "number",
+                                                                            "label": "Sent emails"
+                                                                        },
+                                                                        {
+                                                                            "name": "flddwXJsmslsCqAEV",
+                                                                            "type": "number",
+                                                                            "label": "Completed calls"
+                                                                        },
+                                                                        {
+                                                                            "name": "fldqN2LzromCA88I6",
+                                                                            "spec": {
+                                                                                "label": "Record ID"
+                                                                            },
+                                                                            "type": "array",
+                                                                            "label": "Clients"
+                                                                        },
+                                                                        {
+                                                                            "name": "fldP6Bx3LsLZQ2lGM",
+                                                                            "type": "number",
+                                                                            "label": "Raw Seconds - Call Duration"
+                                                                        }
+                                                                    ],
+                                                                    "type": "collection",
+                                                                    "label": "Record"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "record": {
+                                                            "nested": {
+                                                                "fldqN2LzromCA88I6": {
+                                                                    "mode": "chose",
+                                                                    "items": [
+                                                                        null
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        "typecast": {
+                                                            "mode": "chose"
+                                                        },
+                                                        "useColumnId": {
+                                                            "mode": "chose"
+                                                        }
+                                                    },
+                                                    "parameters": {
+                                                        "__IMTCONN__": {
+                                                            "data": {
+                                                                "scoped": "true",
+                                                                "connection": "airtable3"
+                                                            },
+                                                            "label": "My Airtable OAuth connection (User ID: usrYVWkEW0eWZmXMJ)"
+                                                        }
+                                                    }
+                                                },
+                                                "parameters": [
+                                                    {
+                                                        "name": "__IMTCONN__",
+                                                        "type": "account:airtable3,airtable2",
+                                                        "label": "Connection",
+                                                        "required": true
+                                                    }
+                                                ],
+                                                "expect": [
+                                                    {
+                                                        "name": "base",
+                                                        "type": "select",
+                                                        "label": "Base",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "typecast",
+                                                        "type": "boolean",
+                                                        "label": "Smart links",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "useColumnId",
+                                                        "type": "boolean",
+                                                        "label": "Use Column ID",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "table",
+                                                        "type": "select",
+                                                        "label": "Table",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "record",
+                                                        "spec": [
+                                                            {
+                                                                "name": "fldVgvbKpm4hvzX8V",
+                                                                "time": false,
+                                                                "type": "date",
+                                                                "label": "Date created"
+                                                            },
+                                                            {
+                                                                "name": "fldZ4CgWycT8acELd",
+                                                                "type": "number",
+                                                                "label": "Booked calls"
+                                                            },
+                                                            {
+                                                                "name": "fldZfugMKONJ1eOGz",
+                                                                "type": "number",
+                                                                "label": "Sent emails"
+                                                            },
+                                                            {
+                                                                "name": "flddwXJsmslsCqAEV",
+                                                                "type": "number",
+                                                                "label": "Completed calls"
+                                                            },
+                                                            {
+                                                                "name": "fldqN2LzromCA88I6",
+                                                                "spec": {
+                                                                    "name": "value",
+                                                                    "label": "Record ID"
+                                                                },
+                                                                "type": "array",
+                                                                "label": "Clients"
+                                                            },
+                                                            {
+                                                                "name": "fldP6Bx3LsLZQ2lGM",
+                                                                "type": "number",
+                                                                "label": "Raw Seconds - Call Duration"
+                                                            }
+                                                        ],
+                                                        "type": "collection",
+                                                        "label": "Record"
+                                                    }
+                                                ],
+                                                "interface": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "text",
+                                                        "label": "ID"
+                                                    },
+                                                    {
+                                                        "name": "createdTime",
+                                                        "type": "date",
+                                                        "label": "Created Time"
+                                                    },
+                                                    {
+                                                        "name": "Record ID",
+                                                        "type": "text",
+                                                        "label": "Record ID"
+                                                    },
+                                                    {
+                                                        "name": "Date created",
+                                                        "time": false,
+                                                        "type": "date",
+                                                        "label": "Date created"
+                                                    },
+                                                    {
+                                                        "name": "Calls Booked",
+                                                        "type": "number",
+                                                        "label": "Calls Booked"
+                                                    },
+                                                    {
+                                                        "name": "Emails Sent",
+                                                        "type": "number",
+                                                        "label": "Emails Sent"
+                                                    },
+                                                    {
+                                                        "name": "Calls Done",
+                                                        "type": "number",
+                                                        "label": "Calls Done"
+                                                    },
+                                                    {
+                                                        "name": "Clients",
+                                                        "spec": {
+                                                            "label": "Record ID"
+                                                        },
+                                                        "type": "array",
+                                                        "label": "Clients"
+                                                    },
+                                                    {
+                                                        "name": "Sort Weekly",
+                                                        "type": "text",
+                                                        "label": "Sort Weekly"
+                                                    },
+                                                    {
+                                                        "name": "Clients 2",
+                                                        "type": "array",
+                                                        "label": "Clients 2"
+                                                    },
+                                                    {
+                                                        "name": "Calling Time (minutes)",
+                                                        "type": "text",
+                                                        "label": "Calling Time (minutes)"
+                                                    },
+                                                    {
+                                                        "name": "Raw Seconds - Call Duration",
+                                                        "type": "number",
+                                                        "label": "Raw Seconds - Call Duration"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "flow": [
+                                        {
+                                            "id": 109,
+                                            "module": "airtable:ActionUpdateRecords",
+                                            "version": 3,
+                                            "parameters": {
+                                                "__IMTCONN__": 1052860
+                                            },
+                                            "filter": {
+                                                "name": "Record Exists",
+                                                "conditions": [
+                                                    [
+                                                        {
+                                                            "a": "{{106.`__IMTLENGTH__`}}",
+                                                            "b": "1",
+                                                            "o": "text:equal"
+                                                        }
+                                                    ]
+                                                ]
+                                            },
+                                            "mapper": {
+                                                "id": "{{106.id}}",
+                                                "base": "appYZZLs6i4BAjWMN",
+                                                "table": "tblAd6BVYAOH5kMwn",
+                                                "record": {
+                                                    "fldZfugMKONJ1eOGz": "{{106.`Emails Sent` + 1}}"
+                                                },
+                                                "typecast": false,
+                                                "useColumnId": false
+                                            },
+                                            "metadata": {
+                                                "designer": {
+                                                    "x": 2592,
+                                                    "y": 901,
+                                                    "name": "Update Record Call Minutes"
+                                                },
+                                                "restore": {
+                                                    "expect": {
+                                                        "base": {
+                                                            "label": "Blynked"
+                                                        },
+                                                        "table": {
+                                                            "label": "SDR Stat Reporting [ New]"
+                                                        },
+                                                        "record": {
+                                                            "nested": {
+                                                                "fldqN2LzromCA88I6": {
+                                                                    "mode": "chose"
+                                                                }
+                                                            }
+                                                        },
+                                                        "typecast": {
+                                                            "mode": "chose"
+                                                        },
+                                                        "useColumnId": {
+                                                            "mode": "chose"
+                                                        }
+                                                    },
+                                                    "parameters": {
+                                                        "__IMTCONN__": {
+                                                            "data": {
+                                                                "scoped": "true",
+                                                                "connection": "airtable3"
+                                                            },
+                                                            "label": "My Airtable OAuth connection (User ID: usrYVWkEW0eWZmXMJ)"
+                                                        }
+                                                    }
+                                                },
+                                                "parameters": [
+                                                    {
+                                                        "name": "__IMTCONN__",
+                                                        "type": "account:airtable3,airtable2",
+                                                        "label": "Connection",
+                                                        "required": true
+                                                    }
+                                                ],
+                                                "expect": [
+                                                    {
+                                                        "name": "base",
+                                                        "type": "select",
+                                                        "label": "Base",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "typecast",
+                                                        "type": "boolean",
+                                                        "label": "Smart links",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "useColumnId",
+                                                        "type": "boolean",
+                                                        "label": "Use Column ID",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "table",
+                                                        "type": "select",
+                                                        "label": "Table",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "id",
+                                                        "type": "text",
+                                                        "label": "Record ID",
+                                                        "required": true
+                                                    },
+                                                    {
+                                                        "name": "record",
+                                                        "spec": [
+                                                            {
+                                                                "name": "fldVgvbKpm4hvzX8V",
+                                                                "time": false,
+                                                                "type": "date",
+                                                                "label": "Date created"
+                                                            },
+                                                            {
+                                                                "name": "fldZ4CgWycT8acELd",
+                                                                "type": "number",
+                                                                "label": "Calls Booked"
+                                                            },
+                                                            {
+                                                                "name": "fldZfugMKONJ1eOGz",
+                                                                "type": "number",
+                                                                "label": "Emails Sent"
+                                                            },
+                                                            {
+                                                                "name": "flddwXJsmslsCqAEV",
+                                                                "type": "number",
+                                                                "label": "Calls Done"
+                                                            },
+                                                            {
+                                                                "name": "fldqN2LzromCA88I6",
+                                                                "spec": {
+                                                                    "name": "value",
+                                                                    "label": "Record ID"
+                                                                },
+                                                                "type": "array",
+                                                                "label": "Clients"
+                                                            },
+                                                            {
+                                                                "name": "fldP6Bx3LsLZQ2lGM",
+                                                                "type": "number",
+                                                                "label": "Raw Seconds - Call Duration"
+                                                            }
+                                                        ],
+                                                        "type": "collection",
+                                                        "label": "Record"
+                                                    }
+                                                ],
+                                                "interface": [
+                                                    {
+                                                        "name": "id",
+                                                        "type": "text",
+                                                        "label": "ID"
+                                                    },
+                                                    {
+                                                        "name": "createdTime",
+                                                        "type": "date",
+                                                        "label": "Created Time"
+                                                    },
+                                                    {
+                                                        "name": "Record ID",
+                                                        "type": "text",
+                                                        "label": "Record ID"
+                                                    },
+                                                    {
+                                                        "name": "Date created",
+                                                        "time": false,
+                                                        "type": "date",
+                                                        "label": "Date created"
+                                                    },
+                                                    {
+                                                        "name": "Calls Booked",
+                                                        "type": "number",
+                                                        "label": "Calls Booked"
+                                                    },
+                                                    {
+                                                        "name": "Emails Sent",
+                                                        "type": "number",
+                                                        "label": "Emails Sent"
+                                                    },
+                                                    {
+                                                        "name": "Calls Done",
+                                                        "type": "number",
+                                                        "label": "Calls Done"
+                                                    },
+                                                    {
+                                                        "name": "Clients",
+                                                        "spec": {
+                                                            "label": "Record ID"
+                                                        },
+                                                        "type": "array",
+                                                        "label": "Clients"
+                                                    },
+                                                    {
+                                                        "name": "Sort Weekly",
+                                                        "type": "text",
+                                                        "label": "Sort Weekly"
+                                                    },
+                                                    {
+                                                        "name": "Clients 2",
+                                                        "type": "array",
+                                                        "label": "Clients 2"
+                                                    },
+                                                    {
+                                                        "name": "Calling Time (minutes)",
+                                                        "type": "text",
+                                                        "label": "Calling Time (minutes)"
+                                                    },
+                                                    {
+                                                        "name": "Current Time -Automation Use only",
+                                                        "type": "text",
+                                                        "label": "Current Time -Automation Use only"
+                                                    },
+                                                    {
+                                                        "name": "Trigger automation",
+                                                        "type": "text",
+                                                        "label": "Trigger automation"
+                                                    },
+                                                    {
+                                                        "name": "Raw Seconds - Call Duration",
+                                                        "type": "number",
+                                                        "label": "Raw Seconds - Call Duration"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu2.make.com",
+        "notes": []
+    }
+}
